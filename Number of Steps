@@ -1,0 +1,63 @@
+// Sample code to perform I/O:
+#include <stdio.h>
+int min(int x[],int n)		//Function to return min value of array
+{
+		int m=x[0];
+		for(int i=1;i<n;i++)
+		{
+			if(x[i]<m)
+			m=x[i];
+		}
+		return m;
+}		
+
+int main(){
+	int num,a[5000],b[5000],i,m,n;
+	int k=0;				// to count number of steps
+	scanf("%d", &num);		// input of the size 
+	for(i=0;i<num;i++)
+	scanf("%d",&a[i]);		// input of array a
+	for(i=0;i<num;i++)
+	scanf("%d",&b[i]);		// input of array b
+	do
+	{
+		n=0;				//(later) to check whether all of a's are equal
+		m=min(a,num);
+		for(i=0;i<num;i++)
+		{
+				if(a[i]!=m)	
+				{	
+					while((a[i]>m)&&(a[i]>=b[i]))
+					{
+							a[i]=a[i]-b[i];
+							k++;
+					}
+				}
+				else
+				continue;
+		}
+		for(i=0;i<(num-1);i++)	//checking whether all a's equal ...
+		{
+			if(a[i]==a[i+1])
+			n++;
+			else
+			break;
+		}
+		if(n=num-1)
+		{
+			printf("%d",k);
+			break;
+		}					//... till here
+		if(m=min(a,num))
+		{
+				printf("%d",-1);
+				break;
+		}	
+	}while(1);
+return 0;
+}
+
+// Warning: Printing unwanted or ill-formatted data to output will cause the test cases to fail
+*/
+
+// Write your code here
